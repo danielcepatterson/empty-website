@@ -1,5 +1,6 @@
 // src/App.tsx
 
+import { useEffect, useRef } from "react";
 import "./App.css";
 
 interface Site {
@@ -23,8 +24,47 @@ const sites: Site[] = [
 ];
 
 function App() {
+	const audioRef = useRef<HTMLAudioElement>(null);
+
+	useEffect(() => {
+		// Play fireplace audio on load
+		if (audioRef.current) {
+			audioRef.current.play().catch(() => {
+				// Audio autoplay might be blocked by browser
+				console.log("Fireplace audio autoplay was blocked");
+			});
+		}
+	}, []);
+
 	return (
 		<>
+			<audio
+				ref={audioRef}
+				autoPlay
+				loop
+				style={{ display: "none" }}
+			>
+				<source
+					src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_8c5d11e3-eebf-4f13-9e32-a5ed8d69c901.mp3"
+					type="audio/mpeg"
+				/>
+				Your browser does not support the audio element.
+			</audio>
+
+			<div className="fireplace-container">
+				<div className="fireplace">
+					<div className="fireplace-back"></div>
+					<div className="flames">
+						<div className="flame flame-1"></div>
+						<div className="flame flame-2"></div>
+						<div className="flame flame-3"></div>
+						<div className="flame flame-4"></div>
+						<div className="flame flame-5"></div>
+					</div>
+					<div className="logs"></div>
+				</div>
+			</div>
+
 			<header className="header">
 				<nav className="nav-container">
 					<h1 className="site-title">Danny Evans Mad Wild Experiments</h1>
