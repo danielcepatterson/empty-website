@@ -1,64 +1,76 @@
 // src/App.tsx
 
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import cloudflareLogo from "./assets/Cloudflare_Logo.svg";
-import honoLogo from "./assets/hono.svg";
 import "./App.css";
 
-function App() {
-	const [count, setCount] = useState(0);
-	const [name, setName] = useState("unknown");
+interface Site {
+	name: string;
+	url: string;
+	description: string;
+}
 
+const sites: Site[] = [
+	{
+		name: "Service Master Pro",
+		url: "https://servicemaster.example.com",
+		description: "Service management platform",
+	},
+	{
+		name: "Drum Sequencer",
+		url: "https://drumsequencer.example.com",
+		description: "Interactive drum sequencer",
+	},
+	// Add more sites here as needed
+];
+
+function App() {
 	return (
 		<>
-			<div>
-				<a href="https://vite.dev" target="_blank">
-					<img src={viteLogo} className="logo" alt="Vite logo" />
-				</a>
-				<a href="https://react.dev" target="_blank">
-					<img src={reactLogo} className="logo react" alt="React logo" />
-				</a>
-				<a href="https://hono.dev/" target="_blank">
-					<img src={honoLogo} className="logo cloudflare" alt="Hono logo" />
-				</a>
-				<a href="https://workers.cloudflare.com/" target="_blank">
-					<img
-						src={cloudflareLogo}
-						className="logo cloudflare"
-						alt="Cloudflare logo"
-					/>
-				</a>
-			</div>
-			<h1>Vite + React + Hono + Cloudflare</h1>
-			<div className="card">
-				<button
-					onClick={() => setCount((count) => count + 1)}
-					aria-label="increment"
-				>
-					count is {count}
-				</button>
-				<p>
-					Edit <code>src/App.tsx</code> and save to test HMR
-				</p>
-			</div>
-			<div className="card">
-				<button
-					onClick={() => {
-						fetch("/api/")
-							.then((res) => res.json() as Promise<{ name: string }>)
-							.then((data) => setName(data.name));
-					}}
-					aria-label="get name"
-				>
-					Name from API is: {name}
-				</button>
-				<p>
-					Edit <code>worker/index.ts</code> to change the name
-				</p>
-			</div>
-			<p className="read-the-docs">Click on the logos to learn more</p>
+			<header className="header">
+				<nav className="nav-container">
+					<h1 className="site-title">Danny Evans Mad Wild Experiments</h1>
+					<div className="nav-buttons">
+						{sites.map((site) => (
+							<a
+								key={site.name}
+								href={site.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="nav-button"
+								title={site.description}
+							>
+								{site.name}
+							</a>
+						))}
+					</div>
+				</nav>
+			</header>
+
+			<main className="main-content">
+				<section className="hero">
+					<h2>Welcome</h2>
+					<p>
+						Explore a collection of experimental projects and tools built with
+						cutting-edge technologies.
+					</p>
+				</section>
+
+				<section className="projects-grid">
+					{sites.map((site) => (
+						<div key={site.name} className="project-card">
+							<h3>{site.name}</h3>
+							<p>{site.description}</p>
+							<a
+								href={site.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="project-link"
+							>
+								Visit Project →
+							</a>
+						</div>
+					))}
+				</section>
+			</main>
 		</>
 	);
 }
