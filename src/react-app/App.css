@@ -191,13 +191,34 @@
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Main Content */
-.main-content {
-	flex: 1;
-	padding: 3rem 2rem;
-	max-width: 1200px;
-	margin: 0 auto;
-	width: 100%;
+/* Fireplace Toggle Button */
+.fireplace-toggle {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	z-index: 50;
+	padding: 1rem 1.5rem;
+	background: rgba(255, 255, 255, 0.25);
+	color: white;
+	border: 2px solid rgba(255, 255, 255, 0.4);
+	border-radius: 50px;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	backdrop-filter: blur(10px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.fireplace-toggle:hover {
+	background: rgba(255, 255, 255, 0.35);
+	border-color: rgba(255, 255, 255, 0.6);
+	transform: translateY(-2px);
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.fireplace-toggle:active {
+	transform: translateY(0);
 }
 
 .hero {
