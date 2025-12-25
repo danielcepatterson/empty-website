@@ -11,12 +11,12 @@ interface Site {
 const sites: Site[] = [
 	{
 		name: "Service Master Pro",
-		url: "https://servicemaster.example.com",
+		url: "https://service-master-pro.danielcepatterson.workers.dev/",
 		description: "Service management platform",
 	},
 	{
 		name: "Drum Sequencer",
-		url: "https://drumsequencer.example.com",
+		url: "https://drum-sequencer.danielcepatterson.workers.dev/",
 		description: "Interactive drum sequencer",
 	},
 	// Add more sites here as needed
