@@ -1,6 +1,7 @@
 // src/App.tsx
 
 import { useState, useRef } from "react";
+import ConfettiButton from "./ConfettiButton";
 import "./App.css";
 
 interface Site {
@@ -40,6 +41,7 @@ function App() {
 
 	return (
 		<>
+		<ConfettiButton />
 			<audio
 				ref={audioRef}
 				loop
